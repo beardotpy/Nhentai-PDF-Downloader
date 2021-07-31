@@ -2,7 +2,7 @@
 
 
 1. Download the code as zip
-2. Move Python script into any folder you like
+2. Extract Python script into any folder you like
 3. Install dependencies (see below for details)
 4. Open command prompt if windows and terminal on mac/linux
 5. Type `cd <directory you moved python script into>` and replace <directory you moved python script into> with folder you moved the script into in step 2
