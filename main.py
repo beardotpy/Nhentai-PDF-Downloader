@@ -17,25 +17,21 @@ def get_image_list(path):
 def main():
   input_id = input("Code ( ͡° ͜ʖ ͡°): ")
 
-  # some error handling
   if Hentai.exists(int(input_id)) == False:
     print("bruh give me an id that actually exists smh my head")
     exit()
 
-  #download it ( ͡° ͜ʖ ͡°)
   doujin = Hentai(int(input_id))
   doujin.download(progressbar = True)
 
-  #wait for doujin to finish downloading
   while len(os.listdir(input_id)) < len(doujin.image_urls):
     time.sleep(1)
 
   print("Almost done ;)")
 
-  #pdf creation
   doujin_pdf = FPDF()
-  doujin_pdf.set_auto_page_break(0)        #this is stupid...
-  doujin_pdf.set_margins(0,0,0)            #this one is kinda dumb but not as bad
+  doujin_pdf.set_auto_page_break(0)
+  doujin_pdf.set_margins(0,0,0)
   for image in get_image_list(input_id):  
     doujin_pdf.add_page()
     doujin_pdf.image(image, 0,0,210,297)
@@ -43,7 +39,6 @@ def main():
 
   print("Aaaand done!")
 
-  #cleaning up! deletes the folder made to create pdf
   shutil.rmtree(input_id)
 
 if __name__ == "__main__":
